@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import PercentChange from './PercentChange';
+import TablesFilter from './TablesFilter';
 
 const HearderInfo = () => {
 
@@ -24,11 +25,20 @@ const HearderInfo = () => {
                     Marchés : {headerData.markets && headerData.markets}
                 </li>
             </ul>
-            <ul className="info-mkt">
+            <ul className="infos-mkt">
                 <li className="global-market">
                     Global Market Cap : <PercentChange percent={headerData.market_cap_change_percentage_24h_usd}/>
                 </li>
+                <li>
+                    BTC Dominance : {headerData.market_cap_percentage &&
+                    headerData.market_cap_percentage.btc.toFixed(1) + ("%")}
+                </li>
+                <li>
+                    ETH Dominance : {headerData.market_cap_percentage &&
+                    headerData.market_cap_percentage.eth.toFixed(1) + ('%')}
+                </li>
             </ul>
+            <TablesFilter />
         </div>
     );
 };
