@@ -1,11 +1,13 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import HearderInfo from './components/HearderInfo';
 
 const App = () => {
+  
   return (
     <div className='app-container'>
       <header>
-        <HearderInfo />
+        <HearderInfo /> 
       </header>
     </div>
   );
