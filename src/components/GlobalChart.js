@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { Tooltip, Treemap } from 'recharts';
+import colors from '../styles/_settings.scss';
 
 const GlobalChart = ({coinsData}) => {
 
     const [dataArray, setDataArray] = useState([]);
+
+    const colorPicker = (number) => {
+        
+    }
 
     useEffect(() => {
         let chartData = [];
@@ -20,10 +26,27 @@ const GlobalChart = ({coinsData}) => {
         setDataArray(chartData);
     }, [coinsData])
 
+    const TreemapToolTip = ({active, payload}) => {
+        if(active && payload && payload.length){
+           return (<div className="custom-tooltip">
+                    <p className="label">{payload[0].payload.name}</p>
+                </div>)
+        } return null;
+    }
 
     return (
         <div className='global-chart'>
-            <h1>Test</h1>
+            <Treemap
+                width={730}
+                height={181}
+                data={dataArray}
+                dataKey='size'
+                stroke='rgb(51,51,51)'
+                fill='black'
+                aspectRatio="1"
+            >
+                <Tooltip content={<TreemapToolTip/>}/>
+            </Treemap> 
         </div>
     );
 };
