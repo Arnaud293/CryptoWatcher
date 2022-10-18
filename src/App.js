@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import GlobalChart from './components/GlobalChart';
 import HearderInfo from './components/HearderInfo';
+import Table from './components/Table';
 
 const App = () => {
 
@@ -18,6 +19,7 @@ const App = () => {
         <HearderInfo />
         <GlobalChart coinsData={coinsData} /> 
       </header>
+      <Table coinsData={coinsData}/>
     </div>
   );
 };
