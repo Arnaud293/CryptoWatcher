@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import CoinChart from './CoinChart';
 import PercentChange from './PercentChange';
 import StarIcon from './StarIcon';
 
@@ -34,6 +35,9 @@ const TableLine = ({coin, index}) => {
                 <div className="infos">
                     <div className="chart-img" onMouseEnter={() => setShowChart(true)} onMouseLeave={() => setShowChart(false)}> 
                         <img src="./assets/chart-icon.svg" alt="chart-icon" />
+                        <div className="chart-container" id={coin.name}>
+                            {showChart && <CoinChart/>}
+                        </div>
                     </div>
                     <h4>{coin.name}</h4>
                     <span>- {coin.symbol.toUpperCase()}</span>
