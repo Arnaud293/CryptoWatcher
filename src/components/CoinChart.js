@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 const CoinChart = ({coinId, coinName}) => {
 
     const [duration, setDuration] = useState(30);
+    const [coinData, setCoinData] = useState();
 
     const headerData = [
         [1, "1 jour"],
@@ -14,6 +16,24 @@ const CoinChart = ({coinId, coinName}) => {
         [365, "1 an"],
         [3000, "Max"],
     ]
+
+    useEffect(() => {
+        let dataArray = [];
+
+        axios.get(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=${duration}${duration > 32 ? "&interval=daily" : ""}`)
+        .then((res) => {
+            for (let i = 0; i < res.data.prices.length; i++){
+
+                let price = res.data.prices[i][1];
+
+                dataArray.push({
+                    date : new Date(res.data.prices[i][0]).toDateString(),
+                    price: price < '50' ? price : parseInt(price)
+                })
+            }
+            setCoinData(dataArray);
+        })
+    }, [])
 
     return (
         <div className='coin-chart'>
