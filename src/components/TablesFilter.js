@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setStableState } from '../actions/stable.action';
 
 const TablesFilter = () => {
+
+    const [showStable, setShowStable] = useState(true);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(setStableState(showStable))
+    },[showStable])
+
     return (
         <div className='table-filters'>
             <div className="table-filters-container">
                 <div className="stable-checkbox-container">
-                    <input type="checkbox" id="stableCoin" defaultChecked={true} />
-                    <label htmlFor="stableCoin">Avec Stable-Coin</label>
+                    <input type="checkbox" id="stableCoin" defaultChecked={true} onChange={() => setShowStable(!showStable)}/>
+                    <label htmlFor="stableCoin">{showStable ? "Avec Stable Coin" : "Sans Stable Coin"}</label>
                 </div>
             
                 <div className="no-list-btn">
