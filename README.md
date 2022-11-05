@@ -1,6 +1,9 @@
-# Crypto Watch Tower
+#About Crypto Watch Tower
 
 Application made with FromScratch's React course on Podia.
+
+
+##Ressources / API :
 
 Market data : `https://api.coingecko.com/api/v3/global`
 
