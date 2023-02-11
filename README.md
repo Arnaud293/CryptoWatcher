@@ -1,4 +1,5 @@
 # About Crypto Watch Tower
+![crypto_desktop](https://user-images.githubusercontent.com/101059956/218269634-6a8836eb-ee83-47ac-ad57-a0c6903edd6e.png)
 
 Application made with FromScratch's React course on Podia.
 
